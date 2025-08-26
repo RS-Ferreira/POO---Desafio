@@ -1,9 +1,12 @@
+import java.awt.Desktop;
+import java.net.URI;
+
 public class iPhone implements ReprodutorMusical, AparelhoTelefonico, NavegadorInternet {
 
-    // Métodos de ReprodutorMusical
+    // Métodos do reprodutor musical
     @Override
     public void tocar() {
-        System.out.println("Tocando música...");
+        System.out.println("Reproduzindo música...");
     }
 
     @Override
@@ -13,13 +16,13 @@ public class iPhone implements ReprodutorMusical, AparelhoTelefonico, NavegadorI
 
     @Override
     public void selecionarMusica(String musica) {
-        System.out.println("Selecionando música: " + musica);
+        System.out.println("Selecionando a música: " + musica);
     }
 
-    // Métodos de AparelhoTelefonico
+    // Métodos do telefone
     @Override
     public void ligar(String numero) {
-        System.out.println("Ligando para " + numero + "...");
+        System.out.println("Ligando para: " + numero);
     }
 
     @Override
@@ -32,10 +35,15 @@ public class iPhone implements ReprodutorMusical, AparelhoTelefonico, NavegadorI
         System.out.println("Iniciando correio de voz...");
     }
 
-    // Métodos de NavegadorInternet
+    // Métodos do navegador
     @Override
     public void exibirPagina(String url) {
-        System.out.println("Exibindo página: " + url);
+        try {
+            Desktop.getDesktop().browse(new URI(url));
+            System.out.println("Abrindo página: " + url);
+        } catch (Exception e) {
+            System.out.println("Erro ao abrir a página: " + e.getMessage());
+        }
     }
 
     @Override
